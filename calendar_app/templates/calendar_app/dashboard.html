@@ -1,0 +1,25 @@
+{% extends 'calendar_app/base.html' %}
+{% block content %}
+<head>
+    <title>Teacher Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}</h1>
+    <h2>Subjects Taught</h2>
+    <ul>
+        {% for subject in subjects %}
+            <li>{{ subject.name }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Upcoming Events</h2>
+    <ul>
+        {% for lesson in lessons %}
+            <li>{{ lesson.subject.name }}: {{ lesson.name }} on {{ lesson.date }}</li>
+        {% endfor %}
+    </ul>
+    {% comment %} <a href="{% url 'download_schedule' 'excel' %}">Download Schedule in Excel</a>
+    <a href="{% url 'download_schedule' 'pdf' %}">Download Schedule in PDF</a> {% endcomment %}
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teaching Schedule</title>
+</head>
+<body>
+    <h1>{{ user.username }}'s Teaching Schedule</h1>
+    <h2>Subjects Taught</h2>
+    <ul>
+        {% for subject in subjects %}
+            <li>{{ subject.name }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Upcoming Events</h2>
+    <ul>
+        {% for lesson in lessons %}
+            <li>{{ lesson.subject.name }}: {{ lesson.name }} on {{ lesson.date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

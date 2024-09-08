@@ -1,0 +1,24 @@
+{% extends 'calendar_app/index.html' %}
+
+{% block content %}
+    <h2>Register</h2>
+    <hr>
+  
+   <form action="" method="post" novalidate class="shadow p-5">
+   {% csrf_token %}
+   {% if messages %}
+      {% for message in messages %}
+          <p{% if message.tags%} class="alert alert-{{message.tags}} mb-5 {% endif %}">{{message}}</p>
+      {% endfor %}
+   {% endif %} 
+    {% csrf_token %}
+    {% for fm in form %}
+    <div class="form-group mb-3">
+        {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+
+    </div>
+
+    {% endfor %}
+    <input type="submit" value="Submit" class="btn btn-primary">
+    <br>
+{% endblock %}
